@@ -67,7 +67,7 @@ pub(crate) union ifa_ifu_t {
     ifu_broadadr: *mut socketaddr,
     ifu_dstaddr: *mut socketaddr,
 }
-
+#[allow(non_snake_case)]
 pub(crate) mod IFF {
 
     pub const UP: u16 = 0x01;

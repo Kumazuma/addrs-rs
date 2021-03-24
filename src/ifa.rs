@@ -1,6 +1,6 @@
 #[derive(Debug, Clone, Copy)]
 pub struct Flags(u32);
-use std::fmt::{self, *};
+use std::fmt::*;
 
 use super::c_type::IFF;
 impl Display for Flags {

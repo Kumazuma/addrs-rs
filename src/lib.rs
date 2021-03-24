@@ -1,3 +1,41 @@
+//! # Example
+//! ```
+//!extern crate ifaddrs;
+//!use ifaddrs::*;
+//!fn main(){
+//!    let ifaddrs = match IfAddrs::new(){
+//!        Ok(v)=>v,
+//!        Err( _ )=>{
+//!            panic!("can not get ifaddrs");
+//!        }
+//!    };
+//!    for ifaddr in ifaddrs.iter(){
+//!        match ifaddr{
+//!            IfAddr::Inet { name, flags, addr, netmask }=>{
+//!                println!("{:?} {}",ifaddr.family(), name);
+//!                println!("\t{}", flags);
+//!                println!("\taddress: {}",addr);
+//!                println!("\tmask: {}",netmask);
+//!            },
+//!            IfAddr::Packet { name, flags, link_stats }=>{
+//!                println!("{:?} {}",ifaddr.family(), name);
+//!                println!("\t{}", flags);
+//!                println!("\ttx_packets: {}; rx_packets: {};", link_stats.tx_packets, link_stats.rx_packets);
+//!            },
+//!            IfAddr::Bluetooth { name, flags, addr, channel }=>{
+//!                println!("{:?} {}",ifaddr.family(), name);
+//!                println!("\t{}", flags);
+//!            },
+//!            IfAddr::Unsupported { family, flags, name }=>{
+//!                println!("{:?} {}",family, name);
+//!                println!("\t{}", flags);
+//!            }
+//!        }
+//!    }
+//!}
+//!
+//! ```
+
 #[cfg(test)]
 mod tests {
     #[test]
@@ -5,14 +43,16 @@ mod tests {
         assert_eq!(2 + 2, 4);
     }
 }
+
+
+
 mod af;
 mod c_function;
-mod ifa;
+pub mod ifa;
 
 mod c_type;
 use c_function::*;
 use c_type::*;
-use ifa::*;
 #[allow(non_snake_case)]
 pub mod AF {
     pub use super::af::AddressFamily;
