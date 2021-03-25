@@ -1,7 +1,7 @@
 //! # Example
 //! ```
-//!extern crate ifaddrs;
-//!use ifaddrs::*;
+//!extern crate ifaddrs_rs;
+//!use ifaddrs_rs::*;
 //!fn main(){
 //!    let ifaddrs = match IfAddrs::new(){
 //!        Ok(v)=>v,
@@ -20,7 +20,7 @@
 //!            IfAddr::Packet { name, flags, link_stats }=>{
 //!                println!("{:?} {}",ifaddr.family(), name);
 //!                println!("\t{}", flags);
-//!                println!("\ttx_packets: {}; rx_packets: {};", link_stats.tx_packets, link_stats.rx_packets);
+//!                println!("\ttx_packets: {}; rx_packets: {};", link_stats.tx_packets, link_stats.rx_packets);;
 //!            },
 //!            IfAddr::Bluetooth { name, flags, addr, channel }=>{
 //!                println!("{:?} {}",ifaddr.family(), name);
